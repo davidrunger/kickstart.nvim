@@ -78,6 +78,13 @@ vim.opt.scrolloff = 10
 vim.keymap.set('n', 'd', '"_d', { noremap = true, silent = true })
 vim.keymap.set('v', 'd', '"_d', { noremap = true, silent = true })
 
+-- Wrap text in parens, brackets, etc
+vim.api.nvim_set_keymap('x', '[', 'c[<Esc>pa]', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('x', '{', 'c{<Esc>pa}', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('x', '(', 'c(<Esc>pa)', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('x', '"', 'c"<Esc>pa"', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('x', "'", "c'<Esc>pa'", { noremap = true, silent = true })
+
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
