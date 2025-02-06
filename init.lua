@@ -70,6 +70,18 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- LivingDocument compatibility >>>
+-- Auto-reload files changed outside NeoVim.
+vim.opt.autoread = true
+-- Preserve inodes when saving.
+vim.opt.backupcopy = 'yes'
+-- Check for changes when switching buffers, cursor idles, or NeoVim regains focus.
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+  command = "if mode() != 'c' | checktime | endif",
+  pattern = { "*" },
+})
+-- <<< LivingDocument compatibility
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
